@@ -8,6 +8,10 @@ title: Research
 My research interests include Probabilistic Programming Languages, Bayesian and Causal Modelling. I aim to contribute in building efficient modelling and inference methods and practices. 
 
 ## Publications
+
+
+[<img src="https://scholar.google.com/favicon.ico"> Google Scholar](https://scholar.google.com/citations?user=z1plcoUAAAAJ){:target="_blank"}
+
 - ***An Empirical Study of Iterative Knowledge Distillation for Neural Network Compression*** <br>
 **Sharan Yalburgi**, Tirtharaj Dash, Ramya Hebbalaguppe, Srinidhi Hegde, Ashwin Srinivasan.<br>
 *28th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, 2020* <br>
