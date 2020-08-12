@@ -2,7 +2,7 @@
 layout: home
 ---
 
-<img style="float: left; width: 35%; padding: 35px;" src=" {{ site.url }}/images/profile.jpg ">
+<img style="float: left; width: 35%; padding: 35px;" src=" {{ site.url }}/images/profile_photo.jpg ">
 
 
 Visiting Student at MIT's <a href="http://probcomp.csail.mit.edu/">Probabilistic Computing Project.</a>
