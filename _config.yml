@@ -50,8 +50,8 @@ minima:
 header_pages:
  - research.md
  - open_source.md
- - mybookshel.md
- - blog.md
+#  - mybookshelf.md
+#  - blog.md
 
 # Build settings
 theme: minima

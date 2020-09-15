@@ -1,11 +1,11 @@
 ---
-layout: home
+layout: normal
 title: Research
 ---
 
 
 ## Interests
-My research interests include Probabilistic Programming Languages, Bayesian and Causal Modelling. I aim to contribute in building efficient modelling and inference methods and practices. 
+My research interests include Probabilistic Programming Languages, Bayesian and Causal Modelling. I aim to contribute to building efficient modelling and inference methods and practices. 
 
 ## Publications
 
