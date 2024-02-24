@@ -4,6 +4,8 @@ title: Open Source
 ---
 
 Some of my open-source contributions include:
+- [SciML](https://github.com/SciML){:target="_blank"} - Scientific Machine Learning ecosystem in Julia
+  - I have contributed to various packages in the ecosystem including LinearSolve.jl, SciMLBase.jl, Integrals.jl and ModelingToolkit.jl.
 - [JuliaGaussianProcesses](https://github.com/JuliaGaussianProcesses/){:target="_blank"} -  Gaussian Processes ecosystem in Julia 
   - [AbstractGPs.jl](https://github.com/JuliaGaussianProcesses/AbstractGPs.jl){:target="_blank"} -  Abstract types and methods for Gaussian Processes. 
   - [KernelFunctions.jl](https://github.com/JuliaGaussianProcesses/KernelFunctions.jl){:target="_blank"} -  Julia package for kernel functions for machine learning 
