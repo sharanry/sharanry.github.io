@@ -97,31 +97,31 @@ elif action == "delete":
 
 This is just a high level overview of the system. The actual implementation is a lot more complex but the key idea is that we are able to guide the llm in a multi-step manner while still being able to monitor the confidence of the classification and the state of the llm.
 
-% ## Cookbook Examples from Outlines
+<!-- ## Cookbook Examples from Outlines
 
-% Every cookbook example can be simplified to a procedural program which is easy to understand, debug and modify. We can see how this paradigm can be used easily extended each of the examples to tackle more complex tasks.
+Every cookbook example can be simplified to a procedural program which is easy to understand, debug and modify. We can see how this paradigm can be used easily extended each of the examples to tackle more complex tasks.
 
-% ### Classification
+### Classification
 
-% ```python
-% llm = ChatOpenAI(model="gpt-4o-mini", system_prompt="You are an experienced customer success manager.")
+```python
+llm = ChatOpenAI(model="gpt-4o-mini", system_prompt="You are an experienced customer success manager.")
 
-% urgency = classify(llm, email, "User's request", ["urgent", "not urgent"])
+urgency = classify(llm, email, "User's request", ["urgent", "not urgent"])
 
-% # the demo stops here
+# the demo stops here
 
-% if urgency == "urgent":
-%     db.add_tag(email.id, "urgent")
+if urgency == "urgent":
+    db.add_tag(email.id, "urgent")
     
-%     email.reply("Thank you for contacting us. We have noted the urgency and will get back to you very soon.")
-% elif urgency == "not urgent":
-%     db.add_tag(email.id, "not urgent")
+    email.reply("Thank you for contacting us. We have noted the urgency and will get back to you very soon.")
+elif urgency == "not urgent":
+    db.add_tag(email.id, "not urgent")
 
-%     related_discussions = db.semantic_search(discussions, email)
+    related_discussions = db.semantic_search(discussions, email)
 
-%     email.reply("We will get back to you soon. Meanwhile, you might find the following discussions helpful: " + ", ".join([d.title for d in related_discussions]))
+    email.reply("We will get back to you soon. Meanwhile, you might find the following discussions helpful: " + ", ".join([d.title for d in related_discussions]))
 
-% ```
+``` -->
 
 ## Inspirations
 - Outlines 
