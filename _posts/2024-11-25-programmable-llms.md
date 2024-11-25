@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Programmed Intelligent Systems"
-categories: llms, agentic systems, structured llms, dsls
+tags: llms, agentic-systems, structured-llms, dsls
 ---
 
 Some quick thoughts on how to make LLMs more programmable.
@@ -19,6 +19,19 @@ We are going beyond using llms as chatbots but expecting them to do a lot in a o
 
 Let me lay out a vision for a system which can guide the generation of llms in a multi-step manner.
 
+- **Conditionals/Branching**: We should be able to conditionally execute different blocks of code based on the output of the previous generation.
+```python
+if action == "create":
+    do_create()
+elif action == "update":
+    do_update()
+```
+- **Loops**: We should be able to loop through the same LLM procedures with same context for various elements.
+
+- **Structured Generation**: We should be able to guide the llm in a multi-step manner while still being able to monitor the confidence of the classification.
+
+
+Let us see how this sort of a system can be used to build a task management assistant.
 ### Task management assistant
 
 Let us first consider a simple task management assistant which I set out to build which led me to these insights.
