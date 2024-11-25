@@ -3,10 +3,6 @@ layout: normal
 title: Research
 ---
 
-
-## Interests
-My interests include Scientific Machine Learning, Gaussian Processes and Probabilistic Programming. I am also interested in the role of Automatic Differentiation in furthering SciML capabilities.
-
 ## Publications
 
 
