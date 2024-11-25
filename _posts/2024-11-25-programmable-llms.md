@@ -1,37 +1,65 @@
 ---
 layout: post
-title: "Programmed Intelligent Systems"
+title: "Towards Programmable Intelligent Systems"
 tags: llms, agentic-systems, structured-llms, dsls
 ---
 
-Some quick thoughts on how to make LLMs more programmable.
+## Problem
 
-I have been thinking a lot about how to efficiently encode complex multi-step branched business logic in a way which is efficient, robust and easy to debug. 
+How does one efficiently encode complex multi-step-branched business logic in a way which is efficient, robust and easy to debug?
 
-Here are a few key challenges that make adopting AI for business logic tasks harder than necessary:
-- Structured generation of Pydantic objects, json, etc. becomes important when dealing with data extraction tasks. - outlines and instructor are great for this.
-- Business logic often involves complex multi-step decision making which requires efficient context management. LMQL seems to be tailor made for this however it lacks the level of structured generation that outlines and guidance seem to provide.
-- LLMs are often used for classification tasks where having insights into the confidence of the classification is important. - no tool seems to be able to do this yet.
 
-We are going beyond using llms as chatbots but expecting them to do a lot in a one-shot manner still rarely works in practice beyond demos. For deployable AI systems, we need to be able to guide the llm in a multi-step manner.
+## Considerations
+
+There seem to be a few key challenges that make adopting AI for business logic tasks harder than necessary. I will try to outline them and then show how we can use a combination of structured generation and procedural programming to tackle them.
+- **Robust Data Extraction**: Customers often have complex data extraction tasks which require a lot of custom logic. Extracting data which follows a strict schema is a natural use case for structured generation. 
+- **Efficiency and Repeatability**: Business logic often involves complex multi-step decision making which requires efficient context management. We need to be able to guide our language model through this complex decision making process.
+- **Model Confidence**: In many agentic applications, we often use an LLM to classify data in a few-shot manner. It is often useful to have insights into the confidence of the classification. This can alvoid later steps from being executed in vain or worse, in a destructive manner.
+
+With these challenges in mind, I set out to ideate an ideal system for encoding business logic in a way which is efficient, robust and easy to debug.
 
 ## Vision
 
-Let me lay out a vision for a system which can guide the generation of llms in a multi-step manner.
+We are looking to make controlling the LLM's operation as seamless and intuitive as possible so the engineer can focus on the correct implementation of business logic. To this end, we want to make the following features readily available:
 
-- **Conditionals/Branching**: We should be able to conditionally execute different blocks of code based on the output of the previous generation.
+- **Conditionals/Branching**: Branching is a core concept in any decision processes. We want to make it as easy as possible to encode branching logic.
 ```python
+action = classify(llm, request, "User's task management request", ["create", "update"])
 if action == "create":
     do_create()
 elif action == "update":
     do_update()
 ```
-- **Loops**: We should be able to loop through the same LLM procedures with same context for various elements.
+- **Maps/Loops**: Decisions often processing multiple data points in a batched manner. We want to make it natural and efficient to run such logic.
+```python
+parsed_inputs = []
+for input in inputs:
+    parsed_inputs.append(parse(llm, input, "Prompt... {{ PydanticClass | schema}}", PydanticClass))
+# or
+parsed_inputs = pmap(llm, inputs, "Prompt... {{ PydanticClass | schema}}", PydanticClass)
+```
+- **Confidence Monitoring**: Flagging uncertain model outputs is crucial for robust data processing. We want to make it easy to monitor the confidence of the llm at each step.
+```python
+action = classify(llm, request, "User's task management request", ["create", "update", "delete"], beam_search=True)
+print("Confidence: ", action.confidence)
+```
+- **Multi-step Generation**: Prompts often become contextually dependent. We want to make it easy to guide the llm through contexts instead of wasting tokens on explaining the context in each step or complex prompt tuning to achieve the same.
 
-- **Structured Generation**: We should be able to guide the llm in a multi-step manner while still being able to monitor the confidence of the classification.
+Below we add the necessary context to the llm prompt to classify the user's request:
+```python
+llm += "The user's request is {{ request }}. The request can be classified as" + classify(llm, request, "User's task management request", ["create", "update", "delete"], beam_search=True)
+if action == "create":
+    llm += "Create a new todo with the following attributes: title, description, due_date, status. {{ Task | schema}}"
+elif action == "update":
+    llm += "Update the todo with the following attributes: title, description, due_date, status. {{ UpdateTask | schema}}"
+elif action == "delete":
+    llm += "Delete the todo with the following attributes: title, description, due_date, status. {{ DeleteTask | schema}}"
+```
 
+## Application
 
 Let us see how this sort of a system can be used to build a task management assistant.
+
 ### Task management assistant
 
 Let us first consider a simple task management assistant which I set out to build which led me to these insights.
@@ -108,7 +136,11 @@ elif action == "delete":
     db.delete_task(existing_task)
 ```
 
-This is just a high level overview of the system. The actual implementation is a lot more complex but the key idea is that we are able to guide the llm in a multi-step manner while still being able to monitor the confidence of the classification and the state of the llm.
+## Conclusion
+The above system allows for a lot of flexibility in how we can control the llm's operation. We are able to guide the llm through multi-step operations while still being able to monitor the confidence of the classification and the state of the llm. The key idea is that we are able to encode business logic in a way which is both efficient and easy to debug and modify.
+
+
+
 
 <!-- ## Cookbook Examples from Outlines
 
@@ -136,7 +168,7 @@ elif urgency == "not urgent":
 
 ``` -->
 
-## Inspirations
+## Inspiration
 - Outlines 
     - robust structured generation of Pydantic objects, json, etc.
     - token management
