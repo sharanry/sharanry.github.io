@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sharan yalburgi</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+    
+    html {
+      scrollbar-gutter: stable;
+    }
+    
+    body {
+      font-family: var(--font-sans);
+      text-transform: lowercase;
+      overflow-y: scroll;
+    }
+    
+    /* Always visible scrollbar for webkit browsers */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 0;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    a {
+      transition: color 0.2s;
+    }
+    
+    button {
+      transition: color 0.2s;
+    }
+    
+    /* typography utilities */
+    .text-body {
+      @apply text-sm md:text-base font-light;
+    }
+    
+    .text-secondary {
+      @apply text-gray-800 font-light;
+    }
+    
+    .text-muted {
+      @apply text-gray-900 font-light;
+    }
+    
+    .text-heading {
+      @apply text-gray-700 font-light tracking-wide;
+    }
+    
+    .text-link {
+      @apply text-black font-light;
+    }
+    
+    .text-link:hover {
+      @apply text-gray-700;
+    }
+    
+    button.text-link:hover {
+      @apply text-gray-700;
+    }
+    
+    .text-lead {
+      @apply text-sm md:text-base leading-relaxed text-black font-light;
+    }
+    
+    .text-caption {
+      @apply text-xs md:text-sm text-gray-500 font-light;
+    }
+    
+    .text-footer {
+      @apply text-xs text-gray-600 font-light;
+    }
+    
+    /* heading styles */
+    h1 {
+      @apply text-3xl md:text-4xl font-light tracking-tight mb-2;
+    }
+    
+    h2 {
+      @apply text-lg md:text-xl font-light text-gray-500 mb-6 tracking-wide;
+    }
+    
+    h3 {
+      @apply text-sm md:text-base font-light mb-1;
+    }
+    
+    /* layout utilities */
+    .section {
+      @apply mb-16;
+    }
+    
+    .container {
+      @apply min-h-screen max-w-2xl mx-auto px-6 py-16 md:py-24;
+    }
+    
+    .header {
+      @apply mb-16;
+    }
+    
+    .spacing-tight {
+      @apply space-y-2;
+    }
+    
+    .spacing-normal {
+      @apply space-y-6;
+    }
+    
+    .paragraph-spacing {
+      @apply mb-4;
+    }
+    
+    .posts-container {
+      /* @apply overflow-y-scroll my-4 p-4;
+      max-height: 15rem; */
+      /* background: rgba(0, 0, 0, 0.02); */
+    }
+    
+    /* Post detail overlay */
+    .post-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: white;
+      z-index: 1000;
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .post-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .post-title-moving {
+      position: fixed;
+      z-index: 1001;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      @apply text-3xl md:text-4xl font-light tracking-tight mb-2 text-black;
+      white-space: nowrap;
+      opacity: 0;
+      display: none;
+    }
+    
+    .post-content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s;
+    }
+    
+    .post-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .post-close-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 1002;
+      opacity: 0;
+      transition: opacity 0.3s ease 0.6s;
+    }
+    
+    .post-overlay.active .post-close-btn {
+      opacity: 1;
+    }
+    
+    /* Post item hover effects */
+    .post-item {
+      @apply transition-colors duration-200 rounded px-2 py-1 -mx-2 -my-1 cursor-pointer;
+    }
+    
+    .post-item:hover {
+      @apply bg-gray-50;
+    }
+  </style>
+</head>
+<body class="bg-white text-black antialiased">
+  <main class="container">
+    <header class="header">
+      <p class="text-3xl md:text-4xl font-light tracking-tight mb-2 text-black">sharan yalburgi</p>
+      <p class="text-secondary">ordering the chaos</p>
+    </header>
+    
+    <section class="section">
+      <p class="text-lead paragraph-spacing">
+        building thoughtful software with attention to detail and user experience.
+      </p>
+      <p class="text-lead">
+        interested in clean code, elegant solutions, and the craft of development.
+      </p>
+    </section>
+    
+    <section class="section">
+      <div class="space-y-8 posts-container">
+        <div class="post-item group">
+          <p class="mb-1">
+            <a href="#" class="post-link text-link text-sm md:text-base font-light" data-title="on writing" data-content="<p class='text-lead paragraph-spacing'>Write for clarity of thought.</p><p class='text-lead paragraph-spacing'>Share for criticism of your clarity.</p><p class='text-lead paragraph-spacing'>Interact to spawn a subculture.</p>">on writing</a>
+          </p>
+          <p class="text-caption">
+            writing for clarity, sharing for criticism, interacting to spawn subculture.
+          </p>
+        </div>
+        <div class="post-item group">
+          <p class="mb-1">
+            <a
+              href="#"
+              class="post-link text-link text-sm md:text-base font-light"
+              data-title="on wrappers and products"
+              data-content="
+                <p class='text-lead paragraph-spacing'>Is everything a wrapper?</p>
+                <p class='text-lead paragraph-spacing'>Some people are making the case that everything is a wrapper.</p>
+                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
+                  <li>Anthropic models are a wrapper over Nvidia.</li>
+                  <li>Nvidia is a wrapper over ASML.</li>
+                  <li>ASML is a wrapper over lithography?</li>
+                  <li>Lithography is a wrapper over fundamental physics.</li>
+                </ul>
+                <p class='text-lead paragraph-spacing'>Can we say that at each layer as long as non trivial value is provided in terms of (software, hardware) interfaces, user experience, that the value chain is solid and the market efficiency should take care of the value attribution?</p>
+              "
+            >
+              on wrappers and products
+            </a>
+          </p>
+          <p class="text-caption">
+            exploring whether everything is a wrapper and the value chain implications.
+          </p>
+        </div>
+        <div class="post-item group">
+          <p class="mb-1">
+            <a href="#" class="post-link text-link text-sm md:text-base font-light" data-title="on finding enthralling subculture or a sub society" data-content="<p class='text-lead paragraph-spacing'>Stop searching. Start producing. Produce (blog, X, subreddit) posts, (video) essays, (video) podcasts</p><p class='text-lead paragraph-spacing'>Through this process, either the subculture finds you, or you found a subculture.</p>">on finding enthralling subculture or a sub society</a>
+          </p>
+          <p class="text-caption">
+            stop searching, start producing—let the subculture find you.
+          </p>
+        </div>
+        <div class="post-item group">
+          <p class="mb-1">
+            <a
+              href="#"
+              class="post-link text-link text-sm md:text-base font-light"
+              data-title="parallels between fast public transport and llms"
+              data-content="
+                <p class='text-lead paragraph-spacing'>
+                  Map using <code>(Rent + Travel Cost) + Time</code> as a visual distance metric. a land mass knitted together
+                </p>
+                <p class='text-lead paragraph-spacing'><strong>Implications:</strong></p>
+                <p class='text-lead paragraph-spacing'><strong>Geographical Inclusivity in The Labour Market</strong></p>
+                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
+                  <li>Makes markets more efficient</li>
+                  <li>Makes people more productive</li>
+                  <li>Increases productivity of the region/city/country.</li>
+                </ul>
+                <p class='text-lead paragraph-spacing'><strong>Parallels to AI automation</strong></p>
+                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
+                  <li>Shortening the time from idea to execution for knowledge workers.</li>
+                  <li>Increasing knowledge work productivity.</li>
+                </ul>
+                <p class='text-lead paragraph-spacing'><strong>Pitfalls</strong></p>
+                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
+                  <li>Slop:</li>
+                </ul>
+                <p class='text-lead paragraph-spacing'><strong>How to protect yourself:</strong></p>
+                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
+                  <li>
+                    Purposeful use of AI tools.
+                  </li>
+                  <li>
+                    Time bound AI based solution making, revert to manual solving.
+                    <ul style='list-style-type: circle; padding-left: 1.5rem;'>
+                      <li>Improves productivity</li>
+                      <li>Improves quality</li>
+                      <li>Improves human agency and expertise.</li>
+                      <li>
+                        Question: Is it worth it to painstaking learn regex formation, if an LLM can do a better job at it?
+                        <ul style='list-style-type: square; padding-left: 1.5rem;'>
+                          <li>Yes! If regex is mission critical</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <p class='text-lead paragraph-spacing'><strong>Geographical Inclusivity in the Links:</strong></p>
+                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
+                  <li>
+                    <a href='https://www.mapnificent.net/london/#12/51.5005/-0.1283/1920/51.5005/-0.1283' class='text-link' target='_blank'>
+                      https://www.mapnificent.net/london/#12/51.5005/-0.1283/1920/51.5005/-0.1283
+                    </a>
+                  </li>
+                  <li>
+                    <a href='https://traveltime.com/blog/london-commuter-map-wheres-best-to-live-meet-friends' class='text-link' target='_blank'>
+                      https://traveltime.com/blog/london-commuter-map-wheres-best-to-live-meet-friends
+                    </a>
+                  </li>
+                </ul>
+              "
+            >
+              parallels between fast public transport and llms
+            </a>
+          </p>
+          <p class="text-caption">
+            comparing public transport accessibility to llm productivity gains.
+          </p>
+        </div>
+        <div class="post-item group">
+          <p class="mb-1">
+            <a href="#" class="post-link text-link text-sm md:text-base font-light" data-title="on taste" data-content="<p class='text-lead paragraph-spacing'>Being a pretty good guesser of finite plausible steps towards making a work product feel better</p><p class='text-lead paragraph-spacing'><strong>How does one develop it?</strong></p><ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'><li>observation followed by validation by some sub society</li><li>Healthy amount of Self obsession / ego</li><li>Agency</li></ul>">on taste</a>
+          </p>
+          <p class="text-caption">
+            developing taste through observation, validation, self-obsession, and agency.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Post Detail Overlay -->
+    <div class="post-overlay" id="post-overlay">
+      <button class="post-close-btn text-link focus:outline-none" onclick="closePost()">close</button>
+      <div class="container">
+        <header class="header">
+          <h1 class="post-title-moving" id="post-title-moving"></h1>
+        </header>
+        <section class="section">
+          <div class="post-content" id="post-content">
+            <div id="post-content-text"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    <section class="section">
+      <div class="spacing-tight">
+        <p class="text-body">
+          <button onclick="showEmail()" class="text-link focus:outline-none" id="email-btn">email</button>
+          <span id="email-container" class="ml-2 hidden">
+            <button onclick="copyEmail()" class="text-muted underline text-xs focus:outline-none" id="copy-btn">sharanyalburgi@gmail.com</button>
+            <span id="copied-msg" class="text-green-600 text-xs ml-1 hidden">copied!</span>
+          </span>
+        </p>
+        <script>
+          function showEmail() {
+            document.getElementById('email-container').classList.remove('hidden');
+            document.getElementById('email-btn').disabled = true;
+          }
+          function copyEmail() {
+            const email = 'sharanyalburgi@gmail.com';
+            navigator.clipboard.writeText(email);
+            document.getElementById('copy-btn').textContent = email;
+            document.getElementById('copied-msg').classList.remove('hidden');
+            setTimeout(() => {
+              document.getElementById('copied-msg').classList.add('hidden');
+            }, 1200);
+          }
+        </script>
+        
+        <script>
+          function openPost(event, linkElement) {
+            event.preventDefault();
+            
+            const title = linkElement.getAttribute('data-title');
+            const content = linkElement.getAttribute('data-content');
+            const overlay = document.getElementById('post-overlay');
+            const titleMoving = document.getElementById('post-title-moving');
+            const contentDiv = document.getElementById('post-content');
+            const contentText = document.getElementById('post-content-text');
+            
+            // Get the original position of the clicked link
+            const rect = linkElement.getBoundingClientRect();
+            const scrollY = window.scrollY;
+            
+            // Set initial position and content - start exactly where the link is
+            titleMoving.textContent = title;
+            titleMoving.style.left = rect.left + 'px';
+            titleMoving.style.top = rect.top + 'px';
+            titleMoving.style.width = rect.width + 'px';
+            titleMoving.style.fontSize = window.getComputedStyle(linkElement).fontSize;
+            titleMoving.style.opacity = '1';
+            titleMoving.style.display = 'block';
+            
+            // Set content (support HTML)
+            contentText.innerHTML = content;
+            contentDiv.classList.remove('visible');
+            
+            // Show overlay (but keep it transparent initially)
+            overlay.classList.add('active');
+            
+            // Force reflow to ensure initial styles are applied
+            void titleMoving.offsetWidth;
+            
+            // Calculate target position (top of overlay container, matching header position)
+            // Wait a moment for overlay to be visible, then calculate
+            requestAnimationFrame(() => {
+              const overlayContainer = overlay.querySelector('.container');
+              const overlayHeader = overlay.querySelector('.header');
+              const overlayContainerRect = overlayContainer.getBoundingClientRect();
+              const overlayHeaderRect = overlayHeader.getBoundingClientRect();
+              
+              // Target position matches where the header title would be in overlay
+              const targetTop = overlayHeaderRect.top;
+              const targetLeft = overlayContainerRect.left + 24; // px-6 = 24px
+              
+              // Animate title to top
+              requestAnimationFrame(() => {
+                titleMoving.style.left = targetLeft + 'px';
+                titleMoving.style.top = targetTop + 'px';
+                titleMoving.style.width = 'auto';
+                titleMoving.style.fontSize = ''; // Reset to use CSS classes
+              });
+            });
+            
+            // Animate content in after title animation starts
+            setTimeout(() => {
+              contentDiv.classList.add('visible');
+            }, 300);
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+          
+          function closePost() {
+            const overlay = document.getElementById('post-overlay');
+            const titleMoving = document.getElementById('post-title-moving');
+            const contentDiv = document.getElementById('post-content');
+            
+            // Hide content first
+            contentDiv.classList.remove('visible');
+            
+            // Hide overlay and reset title
+            setTimeout(() => {
+              overlay.classList.remove('active');
+              titleMoving.style.opacity = '0';
+              setTimeout(() => {
+                titleMoving.style.display = 'none';
+                titleMoving.textContent = '';
+              }, 300);
+            }, 200);
+          }
+          
+          // Attach click handlers to all post items
+          document.addEventListener('DOMContentLoaded', function() {
+            const postItems = document.querySelectorAll('.post-item');
+            postItems.forEach(item => {
+              item.addEventListener('click', (e) => {
+                const link = item.querySelector('.post-link');
+                if (link) {
+                  openPost(e, link);
+                }
+              });
+            });
+          });
+        </script>
+        <p class="text-body">
+          <a href="https://github.com/sharanry" class="text-link">github</a>
+        </p>
+        <p class="text-body">
+          <a href="#" class="text-link">linkedin</a>
+        </p>
+      </div>
+    </section>
+    
+    <footer class="text-footer">
+      <p>© 2025</p>
+    </footer>
+  </main>
+</body>
+</html>
