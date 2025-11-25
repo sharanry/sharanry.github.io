@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>sharan yalburgi</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
   <style type="text/tailwindcss">
     @theme {
       --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -213,124 +214,8 @@
     </section>
     
     <section class="section">
-      <div class="space-y-8 posts-container">
-        <div class="post-item group">
-          <p class="mb-1">
-            <a href="#" class="post-link text-link text-sm md:text-base font-light" data-title="on writing" data-content="<p class='text-lead paragraph-spacing'>Write for clarity of thought.</p><p class='text-lead paragraph-spacing'>Share for criticism of your clarity.</p><p class='text-lead paragraph-spacing'>Interact to spawn a subculture.</p>">on writing</a>
-          </p>
-          <p class="text-caption">
-            writing for clarity, sharing for criticism, interacting to spawn subculture.
-          </p>
-        </div>
-        <div class="post-item group">
-          <p class="mb-1">
-            <a
-              href="#"
-              class="post-link text-link text-sm md:text-base font-light"
-              data-title="on wrappers and products"
-              data-content="
-                <p class='text-lead paragraph-spacing'>Is everything a wrapper?</p>
-                <p class='text-lead paragraph-spacing'>Some people are making the case that everything is a wrapper.</p>
-                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
-                  <li>Anthropic models are a wrapper over Nvidia.</li>
-                  <li>Nvidia is a wrapper over ASML.</li>
-                  <li>ASML is a wrapper over lithography?</li>
-                  <li>Lithography is a wrapper over fundamental physics.</li>
-                </ul>
-                <p class='text-lead paragraph-spacing'>Can we say that at each layer as long as non trivial value is provided in terms of (software, hardware) interfaces, user experience, that the value chain is solid and the market efficiency should take care of the value attribution?</p>
-              "
-            >
-              on wrappers and products
-            </a>
-          </p>
-          <p class="text-caption">
-            exploring whether everything is a wrapper and the value chain implications.
-          </p>
-        </div>
-        <div class="post-item group">
-          <p class="mb-1">
-            <a href="#" class="post-link text-link text-sm md:text-base font-light" data-title="on finding enthralling subculture or a sub society" data-content="<p class='text-lead paragraph-spacing'>Stop searching. Start producing. Produce (blog, X, subreddit) posts, (video) essays, (video) podcasts</p><p class='text-lead paragraph-spacing'>Through this process, either the subculture finds you, or you found a subculture.</p>">on finding enthralling subculture or a sub society</a>
-          </p>
-          <p class="text-caption">
-            stop searching, start producing—let the subculture find you.
-          </p>
-        </div>
-        <div class="post-item group">
-          <p class="mb-1">
-            <a
-              href="#"
-              class="post-link text-link text-sm md:text-base font-light"
-              data-title="parallels between fast public transport and llms"
-              data-content="
-                <p class='text-lead paragraph-spacing'>
-                  Map using <code>(Rent + Travel Cost) + Time</code> as a visual distance metric. a land mass knitted together
-                </p>
-                <p class='text-lead paragraph-spacing'><strong>Implications:</strong></p>
-                <p class='text-lead paragraph-spacing'><strong>Geographical Inclusivity in The Labour Market</strong></p>
-                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
-                  <li>Makes markets more efficient</li>
-                  <li>Makes people more productive</li>
-                  <li>Increases productivity of the region/city/country.</li>
-                </ul>
-                <p class='text-lead paragraph-spacing'><strong>Parallels to AI automation</strong></p>
-                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
-                  <li>Shortening the time from idea to execution for knowledge workers.</li>
-                  <li>Increasing knowledge work productivity.</li>
-                </ul>
-                <p class='text-lead paragraph-spacing'><strong>Pitfalls</strong></p>
-                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
-                  <li>Slop:</li>
-                </ul>
-                <p class='text-lead paragraph-spacing'><strong>How to protect yourself:</strong></p>
-                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
-                  <li>
-                    Purposeful use of AI tools.
-                  </li>
-                  <li>
-                    Time bound AI based solution making, revert to manual solving.
-                    <ul style='list-style-type: circle; padding-left: 1.5rem;'>
-                      <li>Improves productivity</li>
-                      <li>Improves quality</li>
-                      <li>Improves human agency and expertise.</li>
-                      <li>
-                        Question: Is it worth it to painstaking learn regex formation, if an LLM can do a better job at it?
-                        <ul style='list-style-type: square; padding-left: 1.5rem;'>
-                          <li>Yes! If regex is mission critical</li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-                <p class='text-lead paragraph-spacing'><strong>Geographical Inclusivity in the Links:</strong></p>
-                <ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'>
-                  <li>
-                    <a href='https://www.mapnificent.net/london/#12/51.5005/-0.1283/1920/51.5005/-0.1283' class='text-link' target='_blank'>
-                      https://www.mapnificent.net/london/#12/51.5005/-0.1283/1920/51.5005/-0.1283
-                    </a>
-                  </li>
-                  <li>
-                    <a href='https://traveltime.com/blog/london-commuter-map-wheres-best-to-live-meet-friends' class='text-link' target='_blank'>
-                      https://traveltime.com/blog/london-commuter-map-wheres-best-to-live-meet-friends
-                    </a>
-                  </li>
-                </ul>
-              "
-            >
-              parallels between fast public transport and llms
-            </a>
-          </p>
-          <p class="text-caption">
-            comparing public transport accessibility to llm productivity gains.
-          </p>
-        </div>
-        <div class="post-item group">
-          <p class="mb-1">
-            <a href="#" class="post-link text-link text-sm md:text-base font-light" data-title="on taste" data-content="<p class='text-lead paragraph-spacing'>Being a pretty good guesser of finite plausible steps towards making a work product feel better</p><p class='text-lead paragraph-spacing'><strong>How does one develop it?</strong></p><ul class='text-lead paragraph-spacing' style='list-style-type: disc; padding-left: 1.5rem;'><li>observation followed by validation by some sub society</li><li>Healthy amount of Self obsession / ego</li><li>Agency</li></ul>">on taste</a>
-          </p>
-          <p class="text-caption">
-            developing taste through observation, validation, self-obsession, and agency.
-          </p>
-        </div>
+      <div class="space-y-8 posts-container" id="posts-container">
+        <!-- Posts will be loaded here dynamically -->
       </div>
     </section>
     
@@ -457,18 +342,95 @@
             }, 200);
           }
           
-          // Attach click handlers to all post items
-          document.addEventListener('DOMContentLoaded', function() {
-            const postItems = document.querySelectorAll('.post-item');
-            postItems.forEach(item => {
-              item.addEventListener('click', (e) => {
-                const link = item.querySelector('.post-link');
-                if (link) {
-                  openPost(e, link);
+          // Load posts dynamically
+          async function loadPosts() {
+            const postsContainer = document.getElementById('posts-container');
+            
+            try {
+              // Fetch the posts manifest
+              const manifestResponse = await fetch('posts/posts.yaml');
+              if (!manifestResponse.ok) {
+                console.error('Failed to load posts manifest');
+                return;
+              }
+              
+              const yamlText = await manifestResponse.text();
+              const postFiles = jsyaml.load(yamlText);
+              const posts = [];
+              
+              // Fetch all post files in the order specified in posts.yaml
+              for (let index = 0; index < postFiles.length; index++) {
+                const filename = postFiles[index];
+                // Skip files starting with "draft"
+                const basename = filename.split('/').pop();
+                if (basename.toLowerCase().startsWith('draft')) {
+                  continue;
                 }
+                
+                try {
+                  const response = await fetch(`posts/${filename}`);
+                  if (!response.ok) continue;
+                  
+                  const html = await response.text();
+                  const parser = new DOMParser();
+                  const doc = parser.parseFromString(html, 'text/html');
+                  const scriptTag = doc.getElementById('post-data');
+                  
+                  if (scriptTag) {
+                    const postData = JSON.parse(scriptTag.textContent);
+                    // Use index from posts.json array as the order
+                    posts.push({ ...postData, order: index, filename: basename });
+                  }
+                } catch (error) {
+                  console.error(`Error loading post ${filename}:`, error);
+                }
+              }
+              
+              // Sort by order (which matches posts.yaml order)
+              posts.sort((a, b) => a.order - b.order);
+              
+              // Render posts
+              posts.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'post-item group';
+                
+                const link = document.createElement('a');
+                link.href = '#';
+                link.className = 'post-link text-link text-sm md:text-base font-light';
+                link.setAttribute('data-title', post.title);
+                link.setAttribute('data-content', post.content);
+                link.textContent = post.title;
+                
+                const titleP = document.createElement('p');
+                titleP.className = 'mb-1';
+                titleP.appendChild(link);
+                
+                const captionP = document.createElement('p');
+                captionP.className = 'text-caption';
+                captionP.textContent = post.caption;
+                
+                postDiv.appendChild(titleP);
+                postDiv.appendChild(captionP);
+                postsContainer.appendChild(postDiv);
               });
-            });
-          });
+              
+              // Attach click handlers to all post items
+              const postItems = document.querySelectorAll('.post-item');
+              postItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                  const link = item.querySelector('.post-link');
+                  if (link) {
+                    openPost(e, link);
+                  }
+                });
+              });
+            } catch (error) {
+              console.error('Error loading posts:', error);
+            }
+          }
+          
+          // Load posts when DOM is ready
+          document.addEventListener('DOMContentLoaded', loadPosts);
         </script>
         <p class="text-body">
           <a href="https://github.com/sharanry" class="text-link">github</a>
